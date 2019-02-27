@@ -1,0 +1,17 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1>掲示板</h1>
+
+    <form action="/create" method="post">
+        <label for="thread">新しいスレッドを立てる</label>
+        <input type="text" name="thread">
+        <button type="submit">OK</button>
+    </form>
+
+    <h2>スレッド一覧</h2>
+    {% for thread in threads: %}
+        <li><a href="{{ url_for('thread_detail_show', title=thread.threadname) }}">{{ thread.threadname }}</a></li>
+    {% endfor %}
+
+{% endblock %}
+
